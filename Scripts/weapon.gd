@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 @export var orbit_radius: float = 30.0  # distância da arma em relação ao player
+@export var data:WeaponInfo
 
 var player: Node2D   # referência ao player
 var baseoffset:Vector2 #baseoffset do player com o jogador na posição X
