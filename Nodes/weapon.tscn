@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://chj6niai1tf2a"]
+
+[ext_resource type="Texture2D" uid="uid://bvk68d2tm8mbv" path="res://Assets/placeholder-fodase.png" id="1_jt064"]
+[ext_resource type="Script" uid="uid://d0e7tvfsldtnc" path="res://Scripts/weapon.gd" id="2_jt064"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w6ls5"]
+atlas = ExtResource("1_jt064")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhxki"]
+atlas = ExtResource("1_jt064")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jt064"]
+atlas = ExtResource("1_jt064")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jt064"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w6ls5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhxki")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jt064")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jt064"]
+size = Vector2(7.99999, 5.33333)
+
+[node name="Weapon" type="AnimatedSprite2D"]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_jt064")
+offset = Vector2(3, -2)
+script = ExtResource("2_jt064")
+
+[node name="ShootPos" type="Marker2D" parent="."]
+position = Vector2(6.83333, -2.16667)
+
+[node name="WeaponVerification" type="Area2D" parent="." groups=["Weapon"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponVerification"]
+position = Vector2(3, -1.33333)
+shape = SubResource("RectangleShape2D_jt064")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="WeaponVerification" to="." method="_on_weapon_verification_body_entered"]
+[connection signal="body_exited" from="WeaponVerification" to="." method="_on_weapon_verification_body_exited"]

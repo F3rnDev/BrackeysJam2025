@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://chj6niai1tf2a"]
+
+[ext_resource type="Texture2D" uid="uid://bvk68d2tm8mbv" path="res://Assets/placeholder-fodase.png" id="1_jt064"]
+[ext_resource type="Script" uid="uid://d0e7tvfsldtnc" path="res://Scripts/weapon.gd" id="2_jt064"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jt064"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_jt064")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Weapon" type="AnimatedSprite2D"]
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_jt064")
+offset = Vector2(4, -2.16667)
+script = ExtResource("2_jt064")

@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://be7bmygp4jd81"]
+
+[ext_resource type="Texture2D" uid="uid://1a4lyhuhcbkr" path="res://Assets/bullet.png" id="2_btnol"]
+[ext_resource type="Script" uid="uid://v3yn7b4ehitt" path="res://Scripts/projectile.gd" id="2_ngkxd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngkxd"]
+
+[node name="Projectile" type="CharacterBody2D"]
+position = Vector2(0, 4.76837e-07)
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_ngkxd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.19209e-07, -7.15256e-07)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_btnol")
+
+[node name="Collision" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision"]
+position = Vector2(0, -4.76837e-07)
+shape = SubResource("RectangleShape2D_ngkxd")
+debug_color = Color(1.17439e-05, 0.585803, 0.775178, 0.42)
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(22, -4.76837e-07)
+
+[connection signal="area_entered" from="Collision" to="." method="_on_collision_area_entered"]
