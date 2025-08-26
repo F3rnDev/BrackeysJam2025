@@ -11,10 +11,32 @@ var baseoffset:Vector2 #baseoffset do player com o jogador na posição X
 
 var canShoot = true
 
+@onready var attackTimer = $AttackTimer
+@onready var shootPos = $ShootPos
+@onready var reloadTimer = $ReloadTimer
+
+var curMag
+var curAmmo
+
 func _ready() -> void:
 	play("default")
 	player = get_parent()
 	baseoffset = global_position - player.global_position
+	
+	setWeaponData()
+
+func setWeaponData():
+	#stats
+	attackTimer.wait_time = data.attackSpeed
+	curMag = data.magCapacity
+	curAmmo = data.maxAmmo
+	reloadTimer.wait_time = data.reloadSpeed
+	
+	#visual
+	sprite_frames = data.sprite
+	shootPos.position = data.shootPos
+	$WeaponVerification/CollisionShape2D.position = data.collPos
+	$WeaponVerification/CollisionShape2D.shape = data.collShape
 
 func _process(delta: float) -> void:
 	if not player:
@@ -40,47 +62,89 @@ func rotateWeapon():
 	global_position = player.global_position + final_baseoffset
 
 func checkShoot():
-	if Input.is_action_just_pressed("Shoot") and canShoot:
+	if Input.is_action_pressed("Shoot") and canShoot:
 		handleShootInput()
-		shoot()
+	
+	if Input.is_action_just_pressed("Reload"):
+		reload()
 
 func handleShootInput():
-	#if not armaCorpoACorpo
-	#	shoot()
-	#else
-	#	attack()
-	
-	shoot()
+	if data.weaponType == WeaponInfo.type.Ranged:
+		shoot()
+	else:
+		attack()
+
+func attack():
+	stop()
+	play("Shoot")
 
 func shoot():
+	#Check if timer isn't already playing
+	if !attackTimer.is_stopped():
+		return
+	
+	#Mag Capacity
+	if curMag == 0:
+		reload()
+		return
+	
+	curMag -= 1
+	print("curMag: ", curMag)
+	
 	#Play shoot animation
 	stop()
 	play("Shoot")
 	
+	#Start attackTimer
+	attackTimer.start()
+	
 	#spawn projectile
 	var projectileInstance = projectile.instantiate() as Projectile
 	var dir = get_global_mouse_position() - global_position
-	projectileInstance.setProjectileParameters($ShootPos.global_position, dir, 600.0, 600.0)
+	projectileInstance.setProjectileParameters(shootPos.global_position, dir, data.bulletSpeed, data.maxDistance, data.spriteBullet)
 	projectileInstance.z_index = -1
 	get_tree().current_scene.add_child(projectileInstance)
 	
 	#spawn weapon explosion
-	var random_explosion = randi_range(0, 1)
-	var explosionType = Explosion.Type.Fire1
-	
-	if random_explosion == 1:
-		explosionType = Explosion.Type.Fire2
+	var rng = randi_range(0, data.shootExplosion.size()-1)
 	
 	var explosionInstance = explosion.instantiate() as Explosion
-	explosionInstance.playExplosion($ShootPos.global_position, explosionType)
+	explosionInstance.playExplosion(shootPos.global_position, data.shootExplosion[rng])
 	explosionInstance.rotation = rotation
 	explosionInstance.offset.x = 4.0
 	explosionInstance.z_index = -1
 	get_tree().current_scene.add_child(explosionInstance)
+
+func reload():
+	#Mag full or no ammo
+	if curMag == data.magCapacity or curAmmo == 0 or !reloadTimer.is_stopped():
+		return
 	
+	player.setReloadBarVisible(true)
+	reloadTimer.start()
+	play("Reload")
+	
+	canShoot = false
+
+func applyReload() -> void:
+	var needed = data.magCapacity - curMag
+	var to_load = min(needed, curAmmo)
+	
+	#apply
+	curMag += to_load
+	curAmmo -= to_load
+	
+	player.setReloadBarVisible(false)
+	play("transitionIdle")
+	canShoot = true
+	print("RELOADED - curMag: " , curMag, " curAmmo: ", curAmmo)
+
 
 func _on_animation_finished() -> void:
-	play("default")
+	if animation == "transitionIdle":
+		play("default")
+	else:
+		play("transitionIdle")
 
 func _on_weapon_verification_body_entered(body: Node2D) -> void:
 	canShoot = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://y2q30obf1ltw"
-path="res://.godot/imported/marker.png-7376e7bb18ea6c8cf93068a6c8852788.ctex"
+uid="uid://bvk68d2tm8mbv"
+path="res://.godot/imported/placeholder-fodase.png-bd9816035dadf15a323af6bfcb336146.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/marker.png"
-dest_files=["res://.godot/imported/marker.png-7376e7bb18ea6c8cf93068a6c8852788.ctex"]
+source_file="res://Assets/Images/placeholder-fodase.png"
+dest_files=["res://.godot/imported/placeholder-fodase.png-bd9816035dadf15a323af6bfcb336146.ctex"]
 
 [params]
 

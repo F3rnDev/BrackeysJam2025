@@ -1,0 +1,61 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://bxnuip5uui030"]
+
+[ext_resource type="Texture2D" uid="uid://dypebrkx4if5d" path="res://Assets/Images/pistol.png" id="1_wdtql"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wdtql"]
+atlas = ExtResource("1_wdtql")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2dnx"]
+atlas = ExtResource("1_wdtql")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7432l"]
+atlas = ExtResource("1_wdtql")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isthq"]
+atlas = ExtResource("1_wdtql")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bk0ap"]
+atlas = ExtResource("1_wdtql")
+region = Rect2(16, 0, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wdtql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2dnx")
+}],
+"loop": true,
+"name": &"Reload",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7432l")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isthq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bk0ap")
+}],
+"loop": false,
+"name": &"transitionIdle",
+"speed": 12.0
+}]

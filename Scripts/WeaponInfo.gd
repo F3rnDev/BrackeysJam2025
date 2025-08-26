@@ -15,17 +15,19 @@ enum type
 
 @export_group("Stats")
 @export var attackSpeed:float
-## Not applicable in melee type.
 @export var maxDistance:float
-## Not applicable in melee type.
+@export var bulletSpeed:float
 @export var maxAmmo:int
-## Not applicable in melee type.
 @export var magCapacity:int
+@export var reloadSpeed:float
 
 @export_group("Visual")
 @export var sprite:SpriteFrames
 @export var spriteBullet:Texture
 @export var spriteUI:Texture
 @export var shootPos:Vector2
-@export var weaponVerification:Shape2D
 @export var shootExplosion:Array[Explosion.Type]
+
+@export_group("Weapon Collision")
+@export var collPos:Vector2
+@export var collShape:Shape2D

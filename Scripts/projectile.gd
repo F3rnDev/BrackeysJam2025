@@ -13,7 +13,7 @@ var spawn:Vector2
 
 var exploded = false
 
-func setProjectileParameters(spawnPos:Vector2, dir:Vector2, speed:float, maxDist:float):
+func setProjectileParameters(spawnPos:Vector2, dir:Vector2, speed:float, maxDist:float, sprite:Texture):
 	self.dir = dir.normalized()
 	self.speed = speed
 	
@@ -23,6 +23,8 @@ func setProjectileParameters(spawnPos:Vector2, dir:Vector2, speed:float, maxDist
 	self.maxDist = maxDist
 	
 	rotation = dir.angle()
+	
+	$Sprite2D.texture = sprite
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
