@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo75d3v4unq70"]
+
+[ext_resource type="Texture2D" uid="uid://cisst2g178oqn" path="res://Assets/Images/Placeholders/placeholder_ant.png" id="1_ht5vo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4cfa"]
+size = Vector2(16, 16)
+
+[node name="Ant" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ht5vo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p4cfa")

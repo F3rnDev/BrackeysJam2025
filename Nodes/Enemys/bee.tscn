@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cibovays3ctjf"]
+
+[ext_resource type="Texture2D" uid="uid://crykuw0ym47ef" path="res://Assets/Images/Placeholders/placeholder_bee.png" id="1_6ul5o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oj5s7"]
+size = Vector2(32, 32)
+
+[node name="Bee" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6ul5o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_oj5s7")

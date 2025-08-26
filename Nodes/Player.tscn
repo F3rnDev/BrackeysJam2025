@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://bgmjmgo3qsjwr"]
 
 [ext_resource type="Script" uid="uid://chni3vrlng31e" path="res://Scripts/player.gd" id="1_bkgf5"]
-[ext_resource type="Texture2D" uid="uid://d10qvs8a3gi5j" path="res://icon.svg" id="1_owxo4"]
 [ext_resource type="PackedScene" uid="uid://chj6niai1tf2a" path="res://Nodes/weapon.tscn" id="3_kl0bm"]
+[ext_resource type="Texture2D" uid="uid://cd7ths8gn57jy" path="res://Assets/Images/Placeholders/placeholder_player.png" id="3_pdiyv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5x0yn"]
-size = Vector2(56, 20)
+size = Vector2(40, 11)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -14,18 +14,18 @@ script = ExtResource("1_bkgf5")
 
 [node name="ReloadBar" type="ProgressBar" parent="."]
 offset_left = -39.0
-offset_top = -40.0
+offset_top = -60.0
 offset_right = 39.0
-offset_bottom = -31.0
+offset_bottom = -51.0
 show_percentage = false
 
 [node name="Weapon" parent="." instance=ExtResource("3_kl0bm")]
-position = Vector2(57, 0)
+position = Vector2(35, -7)
 
 [node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(1, 4.76837e-07)
-scale = Vector2(0.734375, 0.15625)
-texture = ExtResource("1_owxo4")
+position = Vector2(0, -10)
+texture = ExtResource("3_pdiyv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_5x0yn")

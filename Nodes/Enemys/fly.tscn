@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4dbqrm7x1xft"]
+
+[ext_resource type="Texture2D" uid="uid://d28m77y2c41cq" path="res://Assets/Images/Placeholders/placeholder_fly.png" id="1_tiy8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xoox"]
+size = Vector2(16, 16)
+
+[node name="Fly" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tiy8n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6xoox")
