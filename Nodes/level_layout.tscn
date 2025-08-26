@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb62bfeynpsv1"]
 
-[ext_resource type="Texture2D" uid="uid://cewitncnvvtmo" path="res://Assets/Tilemap.png" id="1_rxbj8"]
+[ext_resource type="Texture2D" uid="uid://cewitncnvvtmo" path="res://Assets/Images/Tilemap.png" id="1_rxbj8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rxbj8"]
 texture = ExtResource("1_rxbj8")
