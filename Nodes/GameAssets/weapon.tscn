@@ -2,7 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://bgswoj6vthq86" path="res://Assets/SpriteFrames/Weapons/Knife.tres" id="1_w6ls5"]
 [ext_resource type="Script" uid="uid://d0e7tvfsldtnc" path="res://Scripts/weapon.gd" id="2_jt064"]
-[ext_resource type="Resource" uid="uid://f1cohsjfmu8h" path="res://Assets/Resources/Weapons/pistol.tres" id="3_86ec6"]
+[ext_resource type="Resource" uid="uid://kxihilp4he7m" path="res://Assets/Resources/Weapons/knife.tres" id="3_w6ls5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jt064"]
 size = Vector2(6, 5.33333)
@@ -12,7 +12,7 @@ scale = Vector2(6, 6)
 sprite_frames = ExtResource("1_w6ls5")
 offset = Vector2(3, -2)
 script = ExtResource("2_jt064")
-data = ExtResource("3_86ec6")
+data = ExtResource("3_w6ls5")
 
 [node name="ShootPos" type="Marker2D" parent="."]
 position = Vector2(6, -1.83333)
