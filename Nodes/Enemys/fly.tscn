@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://d28m77y2c41cq" path="res://Assets/Images/Placeholders/placeholder_fly.png" id="1_tiy8n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xoox"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
 
 [node name="Fly" type="CharacterBody2D"]
 collision_layer = 2

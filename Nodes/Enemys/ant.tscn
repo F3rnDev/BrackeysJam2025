@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cisst2g178oqn" path="res://Assets/Images/Placeholders/placeholder_ant.png" id="1_ht5vo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4cfa"]
-size = Vector2(16, 16)
+size = Vector2(32, 32)
 
 [node name="Ant" type="CharacterBody2D"]
 collision_layer = 2
