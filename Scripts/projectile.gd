@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Projectile
 
-@onready var bulletExplosion = preload("res://Nodes/bulletExplosion.tscn")
+@onready var bulletExplosion = preload("res://Nodes/GameAssets/bulletExplosion.tscn")
 var explosionType:Explosion.Type = Explosion.Type.BulletNormal
 
 var dir:Vector2

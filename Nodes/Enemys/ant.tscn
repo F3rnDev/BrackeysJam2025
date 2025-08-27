@@ -6,6 +6,7 @@
 size = Vector2(16, 16)
 
 [node name="Ant" type="CharacterBody2D"]
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_ht5vo")

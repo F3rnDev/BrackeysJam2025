@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="WeaponInfo" load_steps=5 format=3 uid="uid://f1cohsjfmu8h"]
+
+[ext_resource type="Script" uid="uid://ckkuapl6qdbhv" path="res://Scripts/WeaponInfo.gd" id="1_kicjp"]
+[ext_resource type="SpriteFrames" uid="uid://bxnuip5uui030" path="res://Assets/SpriteFrames/Weapons/Pistol.tres" id="2_lep8t"]
+[ext_resource type="Texture2D" uid="uid://1a4lyhuhcbkr" path="res://Assets/Images/bullet.png" id="3_53ugl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhxki"]
+size = Vector2(8, 5.333)
+
+[resource]
+script = ExtResource("1_kicjp")
+name = "Pistol"
+desc = ""
+weaponType = 1
+attackSpeed = 0.3
+maxDistance = 600.0
+bulletSpeed = 600.0
+maxAmmo = 200
+magCapacity = 12
+reloadSpeed = 1.5
+sprite = ExtResource("2_lep8t")
+spriteBullet = ExtResource("3_53ugl")
+shootPos = Vector2(7, -3)
+shootExplosion = Array[int]([2, 3])
+collPos = Vector2(3, -1.667)
+collShape = SubResource("RectangleShape2D_rhxki")
+metadata/_custom_type_script = "uid://ckkuapl6qdbhv"

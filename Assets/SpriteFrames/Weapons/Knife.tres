@@ -1,0 +1,56 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://bgswoj6vthq86"]
+
+[ext_resource type="Texture2D" uid="uid://sh3i3mksraty" path="res://Assets/Images/Weapon/knife.png" id="1_bu56i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhxki"]
+atlas = ExtResource("1_bu56i")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uo37g"]
+atlas = ExtResource("1_bu56i")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qbl2"]
+atlas = ExtResource("1_bu56i")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpcno"]
+atlas = ExtResource("1_bu56i")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kwbry"]
+atlas = ExtResource("1_bu56i")
+region = Rect2(32, 0, 8, 8)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhxki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uo37g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qbl2")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpcno")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kwbry")
+}],
+"loop": false,
+"name": &"transitionIdle",
+"speed": 12.0
+}]

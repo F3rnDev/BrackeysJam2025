@@ -1,49 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://chj6niai1tf2a"]
+[gd_scene load_steps=5 format=3 uid="uid://chj6niai1tf2a"]
 
-[ext_resource type="SpriteFrames" uid="uid://bxnuip5uui030" path="res://Assets/SpriteFrames/Weapons/Pistol.tres" id="1_w6ls5"]
+[ext_resource type="SpriteFrames" uid="uid://bgswoj6vthq86" path="res://Assets/SpriteFrames/Weapons/Knife.tres" id="1_w6ls5"]
 [ext_resource type="Script" uid="uid://d0e7tvfsldtnc" path="res://Scripts/weapon.gd" id="2_jt064"]
-[ext_resource type="Script" uid="uid://ckkuapl6qdbhv" path="res://Scripts/WeaponInfo.gd" id="3_w6ls5"]
-[ext_resource type="Texture2D" uid="uid://1a4lyhuhcbkr" path="res://Assets/Images/bullet.png" id="4_rhxki"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rhxki"]
-size = Vector2(8, 5.333)
-
-[sub_resource type="Resource" id="Resource_rhxki"]
-script = ExtResource("3_w6ls5")
-name = "Pistol"
-desc = ""
-weaponType = 1
-attackSpeed = 0.3
-maxDistance = 600.0
-bulletSpeed = 600.0
-maxAmmo = 200
-magCapacity = 12
-reloadSpeed = 1.5
-sprite = ExtResource("1_w6ls5")
-spriteBullet = ExtResource("4_rhxki")
-shootPos = Vector2(7, -3)
-shootExplosion = Array[int]([2, 3])
-collPos = Vector2(3, -1.667)
-collShape = SubResource("RectangleShape2D_rhxki")
-metadata/_custom_type_script = "uid://ckkuapl6qdbhv"
+[ext_resource type="Resource" uid="uid://f1cohsjfmu8h" path="res://Assets/Resources/Weapons/pistol.tres" id="3_86ec6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jt064"]
-size = Vector2(7.99999, 5.33333)
+size = Vector2(6, 5.33333)
 
 [node name="Weapon" type="AnimatedSprite2D"]
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("1_w6ls5")
 offset = Vector2(3, -2)
 script = ExtResource("2_jt064")
-data = SubResource("Resource_rhxki")
+data = ExtResource("3_86ec6")
 
 [node name="ShootPos" type="Marker2D" parent="."]
-position = Vector2(7, -3)
+position = Vector2(6, -1.83333)
 
 [node name="WeaponVerification" type="Area2D" parent="." groups=["Weapon"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponVerification"]
-position = Vector2(3, -1.66667)
+position = Vector2(2, -1.66667)
 shape = SubResource("RectangleShape2D_jt064")
 
 [node name="AttackTimer" type="Timer" parent="."]

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="WeaponInfo" load_steps=4 format=3 uid="uid://kxihilp4he7m"]
+
+[ext_resource type="Script" uid="uid://ckkuapl6qdbhv" path="res://Scripts/WeaponInfo.gd" id="1_mv623"]
+[ext_resource type="SpriteFrames" uid="uid://bgswoj6vthq86" path="res://Assets/SpriteFrames/Weapons/Knife.tres" id="2_7srkx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv623"]
+size = Vector2(6, 5.333)
+
+[resource]
+script = ExtResource("1_mv623")
+name = "Knife"
+desc = ""
+weaponType = 0
+attackSpeed = 0.5
+maxDistance = 0.0
+bulletSpeed = 0.0
+maxAmmo = 0
+magCapacity = 0
+reloadSpeed = 0.1
+sprite = ExtResource("2_7srkx")
+shootPos = Vector2(4, -2)
+shootExplosion = Array[int]([])
+collPos = Vector2(2, -1.667)
+collShape = SubResource("RectangleShape2D_mv623")
+metadata/_custom_type_script = "uid://ckkuapl6qdbhv"

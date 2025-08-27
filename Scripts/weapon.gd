@@ -6,8 +6,9 @@ extends AnimatedSprite2D
 var player: Node2D   # referência ao player
 var baseoffset:Vector2 #baseoffset do player com o jogador na posição X
 
-@onready var projectile = preload("res://Nodes/projectile.tscn")
-@onready var explosion = preload("res://Nodes/bulletExplosion.tscn")
+@onready var projectile = preload("res://Nodes/GameAssets/projectile.tscn")
+@onready var explosion = preload("res://Nodes/GameAssets/bulletExplosion.tscn")
+@onready var slash = preload("res://Nodes/GameAssets/slash.tscn")
 
 var canShoot = true
 
@@ -26,6 +27,10 @@ func _ready() -> void:
 	setWeaponData()
 
 func setWeaponData():
+	if data == null:
+		visible = false
+		return
+	
 	#stats
 	attackTimer.wait_time = data.attackSpeed
 	curMag = data.magCapacity
@@ -39,7 +44,7 @@ func setWeaponData():
 	$WeaponVerification/CollisionShape2D.shape = data.collShape
 
 func _process(delta: float) -> void:
-	if not player:
+	if not player or data == null:
 		return
 	
 	rotateWeapon()
@@ -65,24 +70,34 @@ func checkShoot():
 	if Input.is_action_pressed("Shoot") and canShoot:
 		handleShootInput()
 	
-	if Input.is_action_just_pressed("Reload"):
+	if Input.is_action_just_pressed("Reload") and data.weaponType == WeaponInfo.type.Ranged:
 		reload()
 
 func handleShootInput():
-	if data.weaponType == WeaponInfo.type.Ranged:
-		shoot()
-	else:
-		attack()
-
-func attack():
-	stop()
-	play("Shoot")
-
-func shoot():
 	#Check if timer isn't already playing
 	if !attackTimer.is_stopped():
 		return
 	
+	if data.weaponType == WeaponInfo.type.Ranged:
+		shoot()
+	else:
+		attack()
+	
+	#Start attackTimer
+	attackTimer.start()
+
+func attack():
+	#Play shoot animation
+	stop()
+	play("Shoot")
+	
+	#spawn weapon slash
+	var slashInstance = slash.instantiate() as Slash
+	var dir = get_global_mouse_position() - global_position
+	slashInstance.setSlashParameters(shootPos.global_position, dir)
+	get_tree().current_scene.add_child(slashInstance)
+
+func shoot():
 	#Mag Capacity
 	if curMag == 0:
 		reload()
@@ -94,9 +109,6 @@ func shoot():
 	#Play shoot animation
 	stop()
 	play("Shoot")
-	
-	#Start attackTimer
-	attackTimer.start()
 	
 	#spawn projectile
 	var projectileInstance = projectile.instantiate() as Projectile

@@ -30,11 +30,22 @@ func movePlayer():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
+#Roll
+func roll():
+	pass
+
 #ReloadBar
 func setReloadBarMax():
+	if weapon.data == null:
+		return
+	
 	reloadBar.max_value = weapon.data.reloadSpeed
 
 func setReloadBarVisible(boolean):
 	reloadBar.visible = boolean
+	
+	if weapon.data == null:
+		return
+	
 	reloading = boolean
 	reloadBar.value = 0

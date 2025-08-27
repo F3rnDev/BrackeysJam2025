@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://c3fdoi3w64adr"]
 
-[ext_resource type="PackedScene" uid="uid://bgmjmgo3qsjwr" path="res://Nodes/Player.tscn" id="1_8gqdb"]
-[ext_resource type="PackedScene" uid="uid://cb62bfeynpsv1" path="res://Nodes/level_layout.tscn" id="2_ks0kp"]
+[ext_resource type="PackedScene" uid="uid://bgmjmgo3qsjwr" path="res://Nodes/GameAssets/Player.tscn" id="1_8gqdb"]
+[ext_resource type="PackedScene" uid="uid://cb62bfeynpsv1" path="res://Nodes/GameAssets/level_layout.tscn" id="2_ks0kp"]
 [ext_resource type="PackedScene" uid="uid://c1b7gwxc5vu6b" path="res://Nodes/Enemys/monster_blue.tscn" id="3_4dnyi"]
 [ext_resource type="PackedScene" uid="uid://cibovays3ctjf" path="res://Nodes/Enemys/bee.tscn" id="4_o7ya3"]
 [ext_resource type="PackedScene" uid="uid://bo75d3v4unq70" path="res://Nodes/Enemys/ant.tscn" id="4_u5ce1"]
