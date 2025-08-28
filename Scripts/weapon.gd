@@ -94,7 +94,7 @@ func attack():
 	#spawn weapon slash
 	var slashInstance = slash.instantiate() as Slash
 	var dir = get_global_mouse_position() - global_position
-	slashInstance.setSlashParameters(shootPos.global_position, dir)
+	slashInstance.setSlashParameters(shootPos.global_position, dir, Vector2(data.slashScale, data.slashScale), data.baseDmg)
 	get_tree().current_scene.add_child(slashInstance)
 
 func shoot():
@@ -113,7 +113,7 @@ func shoot():
 	#spawn projectile
 	var projectileInstance = projectile.instantiate() as Projectile
 	var dir = get_global_mouse_position() - global_position
-	projectileInstance.setProjectileParameters(shootPos.global_position, dir, data.bulletSpeed, data.maxDistance, data.spriteBullet)
+	projectileInstance.setProjectileParameters(shootPos.global_position, dir, data.bulletSpeed, data.maxDistance, data.spriteBullet, data.baseDmg)
 	projectileInstance.z_index = -1
 	get_tree().current_scene.add_child(projectileInstance)
 	

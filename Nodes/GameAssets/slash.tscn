@@ -50,10 +50,11 @@ script = ExtResource("2_kbiwj")
 
 [node name="AreaCollider" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaCollider"]
 position = Vector2(8, -0.166667)
 shape = SubResource("RectangleShape2D_kbiwj")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="area_entered" from="AreaCollider" to="." method="_on_area_collider_area_entered"]

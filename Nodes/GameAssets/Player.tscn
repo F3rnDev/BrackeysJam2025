@@ -1,11 +1,87 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgmjmgo3qsjwr"]
+[gd_scene load_steps=12 format=3 uid="uid://bgmjmgo3qsjwr"]
 
 [ext_resource type="Script" uid="uid://chni3vrlng31e" path="res://Scripts/player.gd" id="1_bkgf5"]
 [ext_resource type="PackedScene" uid="uid://chj6niai1tf2a" path="res://Nodes/GameAssets/weapon.tscn" id="3_kl0bm"]
 [ext_resource type="Texture2D" uid="uid://cd7ths8gn57jy" path="res://Assets/Images/Placeholders/placeholder_player.png" id="3_pdiyv"]
+[ext_resource type="Shader" uid="uid://c7iqiau8etjar" path="res://Assets/Shaders/flashSprite.gdshader" id="3_psc2h"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ika53"]
+shader = ExtResource("3_psc2h")
+shader_parameter/sourceColor = Color(1, 1, 1, 1)
+shader_parameter/hint = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5x0yn"]
 size = Vector2(40, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fugcs"]
+size = Vector2(44, 46)
+
+[sub_resource type="Animation" id="Animation_fugcs"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/hint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_psc2h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:material:shader_parameter/hint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ika53"]
+resource_name = "blink"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_psc2h"]
+_data = {
+&"RESET": SubResource("Animation_psc2h"),
+&"blink": SubResource("Animation_ika53"),
+&"hit": SubResource("Animation_fugcs")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
@@ -22,9 +98,31 @@ show_percentage = false
 position = Vector2(35, -7)
 
 [node name="Icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ika53")
 position = Vector2(0, -10)
 texture = ExtResource("3_pdiyv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_5x0yn")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 2
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_fugcs")
+debug_color = Color(9.62615e-07, 0.644286, 0.283909, 0.42)
+
+[node name="hitAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_psc2h")
+}
+
+[node name="IFrames" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="animation_finished" from="hitAnimation" to="." method="_on_hit_animation_animation_finished"]
+[connection signal="timeout" from="IFrames" to="." method="_on_i_frames_timeout"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm3r6fw0s1ymd"]
+
+[ext_resource type="Script" uid="uid://d2mem3gw2hw4l" path="res://Scripts/global_enemy_behaviour.gd" id="1_id8f0"]
+
+[node name="GlobalBehaviour" type="Node"]
+script = ExtResource("1_id8f0")
