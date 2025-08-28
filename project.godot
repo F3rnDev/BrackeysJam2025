@@ -25,6 +25,10 @@ mouse_cursor/tooltip_position_offset=Vector2(18, 18)
 
 Weapon=""
 
+[gui]
+
+theme/custom_font="uid://bm8vgllahxacy"
+
 [input]
 
 Up={
