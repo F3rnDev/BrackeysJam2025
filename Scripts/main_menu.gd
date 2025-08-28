@@ -33,7 +33,11 @@ func _ready() -> void:
 	MASTER_AUDIO_ID = AudioServer.get_bus_index(MASTER_AUDIO_NAME)
 	MUSIC_AUDIO_ID = AudioServer.get_bus_index(MUSIC_AUDIO_NAME)
 	SFX_AUDIO_ID = AudioServer.get_bus_index(SFX_AUDIO_NAME)
-
+	
+	# Verification web
+	if (OS.has_feature("web")):
+		quitBtn.queue_free()
+	
 func play():
 	get_tree().change_scene_to_file("res://Nodes/defaultStage.tscn")
 	

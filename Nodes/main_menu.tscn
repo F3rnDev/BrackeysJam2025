@@ -1,21 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://c2ll31phwqxxp"]
+[gd_scene load_steps=12 format=3 uid="uid://dtul3xn0156ts"]
 
-[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_2445m"]
-[ext_resource type="Theme" uid="uid://b1f7b8682u7o0" path="res://Assets/Themes/settingsContent.tres" id="2_evfxc"]
+[ext_resource type="Script" uid="uid://dsjj657c20m8u" path="res://Scripts/main_menu.gd" id="1_2445m"]
+[ext_resource type="Theme" uid="uid://b180iuf8ql5ut" path="res://Assets/Themes/geral_theme.tres" id="1_evfxc"]
+[ext_resource type="Texture2D" uid="uid://dsrrgxvyev1we" path="res://Assets/Images/Logo.png" id="3_2445m"]
 [ext_resource type="LabelSettings" uid="uid://cfimeh5jlysyk" path="res://Assets/Themes/Label/titleScreen.tres" id="3_p0xwv"]
 [ext_resource type="LabelSettings" uid="uid://bs4aidgytqw7o" path="res://Assets/Themes/Label/titleSection.tres" id="4_nljct"]
 [ext_resource type="StyleBox" uid="uid://daxeqam8tecqd" path="res://Assets/Themes/separator.tres" id="5_txrji"]
 [ext_resource type="LabelSettings" uid="uid://udgs1rxpo3em" path="res://Assets/Themes/Label/option.tres" id="6_y6oel"]
-[ext_resource type="StyleBox" uid="uid://kpqxvtykrvrs" path="res://Assets/Themes/Button/buttonHover.tres" id="7_8fctq"]
-[ext_resource type="StyleBox" uid="uid://dmvtv5avj3ycb" path="res://Assets/Themes/Button/buttonPressed.tres" id="8_7fjs3"]
-[ext_resource type="StyleBox" uid="uid://detkooxb34tys" path="res://Assets/Themes/Button/buttonNormal.tres" id="9_hwro1"]
 [ext_resource type="AudioStream" uid="uid://u7p101xc14vv" path="res://Assets/Audio/Menu.mp3" id="10_pjnmr"]
 [ext_resource type="AudioStream" uid="uid://elbglqxdbvq4" path="res://Assets/Audio/UIAccept.mp3" id="11_v7py2"]
 [ext_resource type="AudioStream" uid="uid://5mv6kfwfqjju" path="res://Assets/Audio/UIMove.mp3" id="12_fher3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cm266"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8g3n"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -24,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_evfxc")
 script = ExtResource("1_2445m")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -33,7 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0498451, 0.0848552, 0.116735, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -43,20 +40,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+theme_override_constants/separation = 50
 
-[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="CenterContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+texture = ExtResource("3_2445m")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CenterContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Play" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Play"
 
-[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Settings" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Settings"
 
-[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/HBoxContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
@@ -81,7 +89,6 @@ mouse_filter = 2
 custom_minimum_size = Vector2(900, 600)
 layout_mode = 2
 mouse_filter = 2
-theme = ExtResource("2_evfxc")
 
 [node name="Margin" type="MarginContainer" parent="PanelSettings/PanelContainer"]
 layout_mode = 2
@@ -120,12 +127,18 @@ theme_override_styles/separator = ExtResource("5_txrji")
 [node name="SectionOptions" type="VBoxContainer" parent="PanelSettings/PanelContainer/Margin/Content/ScreenSection"]
 layout_mode = 2
 
-[node name="Fullscreen" type="CheckButton" parent="PanelSettings/PanelContainer/Margin/Content/ScreenSection/SectionOptions"]
+[node name="FullscreenOption" type="HBoxContainer" parent="PanelSettings/PanelContainer/Margin/Content/ScreenSection/SectionOptions"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelSettings/PanelContainer/Margin/Content/ScreenSection/SectionOptions/FullscreenOption"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="FullscreenCheckBox" type="CheckButton" parent="PanelSettings/PanelContainer/Margin/Content/ScreenSection/SectionOptions/FullscreenOption"]
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_default_cursor_shape = 2
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cm266")
-text = "Fullscreen"
 
 [node name="Separator2" type="HSeparator" parent="PanelSettings/PanelContainer/Margin/Content"]
 layout_mode = 2
@@ -224,12 +237,6 @@ theme_override_constants/separation = 30
 [node name="Apply" type="Button" parent="PanelSettings/PanelContainer/Margin/Content"]
 layout_mode = 2
 size_flags_horizontal = 4
-mouse_default_cursor_shape = 2
-theme_override_font_sizes/font_size = 32
-theme_override_styles/focus = SubResource("StyleBoxEmpty_g8g3n")
-theme_override_styles/hover = ExtResource("7_8fctq")
-theme_override_styles/pressed = ExtResource("8_7fjs3")
-theme_override_styles/normal = ExtResource("9_hwro1")
 text = "Apply"
 
 [node name="Audio" type="Node" parent="."]
@@ -237,21 +244,24 @@ text = "Apply"
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("10_pjnmr")
 autoplay = true
+bus = &"Music"
 
 [node name="SFX_UI_accept" type="AudioStreamPlayer" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("11_v7py2")
+bus = &"SFX"
 
 [node name="SFX_UI_move" type="AudioStreamPlayer" parent="Audio"]
 unique_name_in_owner = true
 stream = ExtResource("12_fher3")
+bus = &"SFX"
 
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Play" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Settings" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="PanelSettings" method="show"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="PanelSettings" method="set_mouse_filter" binds= [0]]
-[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Quit" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
-[connection signal="toggled" from="PanelSettings/PanelContainer/Margin/Content/ScreenSection/SectionOptions/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="mouse_entered" from="CenterContainer/HBoxContainer/VBoxContainer2/Play" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="mouse_entered" from="CenterContainer/HBoxContainer/VBoxContainer2/Settings" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer2/Settings" to="PanelSettings" method="show"]
+[connection signal="pressed" from="CenterContainer/HBoxContainer/VBoxContainer2/Settings" to="PanelSettings" method="set_mouse_filter" binds= [0]]
+[connection signal="mouse_entered" from="CenterContainer/HBoxContainer/VBoxContainer2/Quit" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="toggled" from="PanelSettings/PanelContainer/Margin/Content/ScreenSection/SectionOptions/FullscreenOption/FullscreenCheckBox" to="." method="_on_fullscreen_toggled"]
 [connection signal="value_changed" from="PanelSettings/PanelContainer/Margin/Content/AudioSection/SectionOptions/Master/SliderMaster/SliderMaster" to="." method="_on_slider_master_value_changed"]
 [connection signal="value_changed" from="PanelSettings/PanelContainer/Margin/Content/AudioSection/SectionOptions/Music/SliderMusic/SliderMusic" to="." method="_on_slider_music_value_changed"]
 [connection signal="value_changed" from="PanelSettings/PanelContainer/Margin/Content/AudioSection/SectionOptions/SFX/SliderSFX/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
