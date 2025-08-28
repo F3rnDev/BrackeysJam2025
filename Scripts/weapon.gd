@@ -18,6 +18,7 @@ var canShoot = true
 
 var curMag
 var curAmmo
+var stopMovement = false
 
 func _ready() -> void:
 	play("default")
@@ -44,7 +45,7 @@ func setWeaponData():
 	$WeaponVerification/CollisionShape2D.shape = data.collShape
 
 func _process(delta: float) -> void:
-	if not player or data == null:
+	if not player or data == null or stopMovement:
 		return
 	
 	rotateWeapon()

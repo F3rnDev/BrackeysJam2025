@@ -12,8 +12,12 @@ var attackOrigin
 var dir
 
 var insideAttack = false
+var stop = false
 
 func _physics_process(delta: float) -> void:
+	if stop:
+		return
+	
 	if insideAttack and behaviorRef.curState != behaviorRef.state.ATTACKING:
 		setUpAttack()
 		behaviorRef.curState = behaviorRef.state.ATTACKING
