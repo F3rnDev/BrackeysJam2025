@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://cibovays3ctjf"]
+[gd_scene load_steps=26 format=3 uid="uid://cibovays3ctjf"]
 
-[ext_resource type="Texture2D" uid="uid://crykuw0ym47ef" path="res://Assets/Images/Placeholders/placeholder_bee.png" id="1_6ul5o"]
 [ext_resource type="Script" uid="uid://ce6hswyyfhadv" path="res://Scripts/Enemies/bee.gd" id="1_b7jkp"]
 [ext_resource type="Shader" uid="uid://c7iqiau8etjar" path="res://Assets/Shaders/flashSprite.gdshader" id="1_gpsv4"]
 [ext_resource type="PackedScene" uid="uid://dm3r6fw0s1ymd" path="res://Nodes/Enemys/!global_behaviour.tscn" id="2_oj5s7"]
+[ext_resource type="Texture2D" uid="uid://btiix7cbskx30" path="res://Assets/Images/bee.png" id="4_xgmc1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xgmc1"]
 radius = 69.0072
@@ -11,10 +11,117 @@ radius = 69.0072
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7jkp"]
 radius = 420.523
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gpsv4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xgmc1"]
 shader = ExtResource("1_gpsv4")
 shader_parameter/sourceColor = Color(1, 1, 1, 1)
 shader_parameter/hint = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wvnh"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eoxtu"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26te1"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4xyc"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8lvu"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ip2h1"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7jkp"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgmc1"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxfy5"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px4rg"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(64, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25lku"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3nwe"]
+atlas = ExtResource("4_xgmc1")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b7jkp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wvnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eoxtu")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26te1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4xyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8lvu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ip2h1")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7jkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgmc1")
+}],
+"loop": true,
+"name": &"Prepare",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxfy5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px4rg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25lku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3nwe")
+}],
+"loop": false,
+"name": &"Stop",
+"speed": 8.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oj5s7"]
 size = Vector2(32, 32)
@@ -27,7 +134,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/hint")
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hint")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -36,18 +143,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_gpsv4"]
 resource_name = "hit"
@@ -55,7 +150,7 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/hint")
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hint")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,29 +171,34 @@ collision_layer = 2
 script = ExtResource("1_b7jkp")
 
 [node name="AttackArea" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_xgmc1")
 
 [node name="AlertArea" type="Area2D" parent="."]
-collision_layer = 2
+collision_layer = 8
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlertArea"]
 shape = SubResource("CircleShape2D_b7jkp")
 debug_color = Color(0.584422, 0.380139, 1, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_gpsv4")
-texture = ExtResource("1_6ul5o")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_xgmc1")
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_b7jkp")
+animation = &"Stop"
+frame = 3
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_oj5s7")
 
 [node name="GlobalBehaviour" parent="." instance=ExtResource("2_oj5s7")]
 unique_name_in_owner = true
+health = 20.0
 
 [node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 2
@@ -118,9 +218,9 @@ libraries = {
 path_postprocessing = 1
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_area_exited"]
 [connection signal="area_entered" from="AlertArea" to="." method="_on_alert_area_area_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

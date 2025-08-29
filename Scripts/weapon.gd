@@ -114,7 +114,7 @@ func shoot():
 	#spawn projectile
 	var projectileInstance = projectile.instantiate() as Projectile
 	var dir = get_global_mouse_position() - global_position
-	projectileInstance.setProjectileParameters(shootPos.global_position, dir, data.bulletSpeed, data.maxDistance, data.spriteBullet, data.baseDmg)
+	projectileInstance.setProjectileParameters(shootPos.global_position, dir, data.bulletSpeed, data.maxDistance, data.spriteBullet, data.baseDmg, "Enemy")
 	projectileInstance.z_index = -1
 	get_tree().current_scene.add_child(projectileInstance)
 	

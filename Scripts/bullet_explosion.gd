@@ -7,7 +7,8 @@ enum Type
 	BulletNormal,
 	BulletWall,
 	Pistol_1,
-	Pistol_2
+	Pistol_2,
+	Enemy
 }
 
 func playExplosion(pos:Vector2, curExplosion:Type):

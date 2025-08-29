@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bje0dd3bscay7"]
+[gd_scene load_steps=24 format=3 uid="uid://bje0dd3bscay7"]
 
 [ext_resource type="Texture2D" uid="uid://3h0h1ddrrb7s" path="res://Assets/Images/explosion.png" id="1_ao0b4"]
 [ext_resource type="Script" uid="uid://cb5lj7jgqrouy" path="res://Scripts/bullet_explosion.gd" id="2_1tqro"]
@@ -34,6 +34,22 @@ region = Rect2(48, 0, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_uyap8"]
 atlas = ExtResource("1_ao0b4")
 region = Rect2(56, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ao0b4"]
+atlas = ExtResource("1_ao0b4")
+region = Rect2(128, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tqro"]
+atlas = ExtResource("1_ao0b4")
+region = Rect2(136, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbvbt"]
+atlas = ExtResource("1_ao0b4")
+region = Rect2(144, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6g67y"]
+atlas = ExtResource("1_ao0b4")
+region = Rect2(152, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_au3e8"]
 atlas = ExtResource("1_ao0b4")
@@ -105,6 +121,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_ao0b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tqro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbvbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6g67y")
+}],
+"loop": false,
+"name": &"Enemy",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_au3e8")
 }, {
 "duration": 1.0,
@@ -141,7 +174,8 @@ animations = [{
 [node name="BulletExplosion" type="AnimatedSprite2D"]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_au3e8")
-animation = &"Pistol_1"
+animation = &"Enemy"
+frame_progress = 0.945518
 offset = Vector2(-4, 0)
 script = ExtResource("2_1tqro")
 

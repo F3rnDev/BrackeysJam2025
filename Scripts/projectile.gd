@@ -15,7 +15,9 @@ var exploded = false
 
 var bulletDamage = 1.0
 
-func setProjectileParameters(spawnPos:Vector2, dir:Vector2, speed:float, maxDist:float, sprite:Texture, bulletDamage:float):
+var hitGroup = "Enemy"
+
+func setProjectileParameters(spawnPos:Vector2, dir:Vector2, speed:float, maxDist:float, sprite:Texture, bulletDamage:float, hitGroup:String):
 	self.dir = dir.normalized()
 	self.speed = speed
 	
@@ -29,6 +31,8 @@ func setProjectileParameters(spawnPos:Vector2, dir:Vector2, speed:float, maxDist
 	$Sprite2D.texture = sprite
 	
 	self.bulletDamage = bulletDamage
+	
+	self.hitGroup = hitGroup
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -45,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _on_collision_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Enemy"):
+	if area.is_in_group(hitGroup):
 		var enemy = area.get_parent()
 		var behaviour = enemy.get_node("GlobalBehaviour")
 		behaviour.receiveHit(bulletDamage, dir)

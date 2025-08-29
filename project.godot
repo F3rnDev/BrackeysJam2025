@@ -17,9 +17,9 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://y2q30obf1ltw"
-mouse_cursor/custom_image_hotspot=Vector2(18, 18)
-mouse_cursor/tooltip_position_offset=Vector2(18, 18)
+mouse_cursor/custom_image_hotspot=Vector2(36, 36)
 
 [global_group]
 
@@ -78,6 +78,7 @@ Roll={
 2d_physics/layer_1="Cenário"
 2d_physics/layer_2="Entidades"
 2d_physics/layer_3="Projeteis"
+2d_physics/layer_4="Detection"
 
 [rendering]
 

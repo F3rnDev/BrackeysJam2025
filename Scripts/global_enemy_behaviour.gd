@@ -42,5 +42,7 @@ func receiveHit(amount, dir):
 	knockback = dir.normalized() * knockback_force
 
 func kill():
-	#do death animation
+	enemy.stop = true
+	enemy.playDeath()
+	
 	enemy.queue_free()
