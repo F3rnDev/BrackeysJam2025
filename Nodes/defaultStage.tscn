@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://c3fdoi3w64adr"]
+[gd_scene load_steps=8 format=4 uid="uid://c3fdoi3w64adr"]
 
 [ext_resource type="PackedScene" uid="uid://bgmjmgo3qsjwr" path="res://Nodes/GameAssets/Player.tscn" id="1_8gqdb"]
 [ext_resource type="PackedScene" uid="uid://cb62bfeynpsv1" path="res://Nodes/GameAssets/level_layout.tscn" id="2_ks0kp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cibovays3ctjf" path="res://Nodes/Enemys/bee.tscn" id="4_o7ya3"]
 [ext_resource type="PackedScene" uid="uid://bo75d3v4unq70" path="res://Nodes/Enemys/ant.tscn" id="4_u5ce1"]
 [ext_resource type="PackedScene" uid="uid://d4dbqrm7x1xft" path="res://Nodes/Enemys/fly.tscn" id="5_fyfdw"]
+[ext_resource type="PackedScene" uid="uid://d2jd3c1a54nb6" path="res://Nodes/hud.tscn" id="7_c80lp"]
 
 [node name="Stage" type="Node2D"]
 
@@ -29,3 +30,5 @@ position = Vector2(460, 460)
 
 [node name="Player" parent="EnemyGrp" instance=ExtResource("1_8gqdb")]
 position = Vector2(238, 222)
+
+[node name="HUD" parent="." instance=ExtResource("7_c80lp")]

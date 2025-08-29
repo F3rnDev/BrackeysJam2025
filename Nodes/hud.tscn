@@ -1,0 +1,228 @@
+[gd_scene load_steps=11 format=3 uid="uid://d2jd3c1a54nb6"]
+
+[ext_resource type="Texture2D" uid="uid://xgudjbvepsd0" path="res://Assets/Images/HUD icons/Hearts/hud_heart_empty.png" id="1_skpb5"]
+[ext_resource type="Script" uid="uid://cathpsdfy4qr" path="res://Scripts/hud.gd" id="1_xic25"]
+[ext_resource type="Texture2D" uid="uid://dqp8if17oe4n" path="res://Assets/Images/HUD icons/Hearts/hud_heart_half.png" id="2_frl2u"]
+[ext_resource type="Texture2D" uid="uid://cc4ux6iql65f1" path="res://Assets/Images/HUD icons/Hearts/hud_heart.png" id="3_ft8jm"]
+[ext_resource type="Texture2D" uid="uid://eu0wujii54io" path="res://Assets/Images/HUD icons/Weapon/pistol.png" id="4_ft8jm"]
+[ext_resource type="FontFile" uid="uid://bm8vgllahxacy" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="5_uspgt"]
+[ext_resource type="Texture2D" uid="uid://d10qvs8a3gi5j" path="res://icon.svg" id="6_74ep8"]
+[ext_resource type="Texture2D" uid="uid://cd7ths8gn57jy" path="res://Assets/Images/Placeholders/placeholder_player.png" id="7_xic25"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_74ep8"]
+font = ExtResource("5_uspgt")
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rwlk8"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_xic25")
+
+[node name="Life_container" type="BoxContainer" parent="."]
+offset_right = 200.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+
+[node name="Empty" type="HBoxContainer" parent="Life_container"]
+layout_mode = 2
+
+[node name="Empty_life1" type="TextureRect" parent="Life_container/Empty"]
+layout_mode = 2
+texture = ExtResource("1_skpb5")
+
+[node name="Empty_life2" type="TextureRect" parent="Life_container/Empty"]
+layout_mode = 2
+texture = ExtResource("1_skpb5")
+
+[node name="Empty_life3" type="TextureRect" parent="Life_container/Empty"]
+layout_mode = 2
+texture = ExtResource("1_skpb5")
+
+[node name="Life" type="Node" parent="Life_container"]
+
+[node name="Half" type="HBoxContainer" parent="Life_container/Life"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Half_life1" type="TextureRect" parent="Life_container/Life/Half"]
+layout_mode = 2
+texture = ExtResource("2_frl2u")
+
+[node name="Half_life2" type="TextureRect" parent="Life_container/Life/Half"]
+layout_mode = 2
+texture = ExtResource("2_frl2u")
+
+[node name="Half_life3" type="TextureRect" parent="Life_container/Life/Half"]
+layout_mode = 2
+texture = ExtResource("2_frl2u")
+
+[node name="Full" type="HBoxContainer" parent="Life_container/Life"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Full_life1" type="TextureRect" parent="Life_container/Life/Full"]
+layout_mode = 2
+texture = ExtResource("3_ft8jm")
+
+[node name="Full_life2" type="TextureRect" parent="Life_container/Life/Full"]
+layout_mode = 2
+texture = ExtResource("3_ft8jm")
+
+[node name="Full_life3" type="TextureRect" parent="Life_container/Life/Full"]
+layout_mode = 2
+texture = ExtResource("3_ft8jm")
+
+[node name="Gun_container" type="BoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -150.0
+offset_right = 356.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Icon" type="TextureRect" parent="Gun_container"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+texture = ExtResource("4_ft8jm")
+
+[node name="Ammo_quantity" type="Label" parent="Gun_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "12/100"
+label_settings = SubResource("LabelSettings_74ep8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Itens_container" type="BoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -604.0
+offset_top = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Itens_passive" type="HBoxContainer" parent="Itens_container"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Item1" type="VBoxContainer" parent="Itens_container/Itens_passive"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Item1"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_74ep8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Item1"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Item2" type="VBoxContainer" parent="Itens_container/Itens_passive"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Item2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_74ep8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Item2"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Item3" type="VBoxContainer" parent="Itens_container/Itens_passive"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Item3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_74ep8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Item3"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Item4" type="VBoxContainer" parent="Itens_container/Itens_passive"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Item4"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_74ep8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Item4"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Item5" type="VBoxContainer" parent="Itens_container/Itens_passive"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Item5"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_74ep8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Item5"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Item6" type="VBoxContainer" parent="Itens_container/Itens_passive"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Item6"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_74ep8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Item6"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Item7" type="VBoxContainer" parent="Itens_container/Itens_passive"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Item7"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_74ep8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Item7"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Item_active" type="TextureRect" parent="Itens_container"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+texture = ExtResource("7_xic25")
+expand_mode = 2
