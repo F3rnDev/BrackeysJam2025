@@ -13,6 +13,7 @@ enum state{
 @export var curState = state.IDLE
 
 #Knockback
+@export var has_knockback:bool = true
 @export var knockback_force: float = 300.0
 @export var knockback_decay: float = 800.0
 
@@ -39,7 +40,8 @@ func receiveHit(amount, dir):
 	animation.play("hit")
 	
 	#Apply Knockback
-	knockback = dir.normalized() * knockback_force
+	if has_knockback:
+		knockback = dir.normalized() * knockback_force
 
 func kill():
 	enemy.stop = true

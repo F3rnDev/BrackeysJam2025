@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cibovays3ctjf" path="res://Nodes/Enemys/bee.tscn" id="4_o7ya3"]
 [ext_resource type="PackedScene" uid="uid://bo75d3v4unq70" path="res://Nodes/Enemys/ant.tscn" id="4_u5ce1"]
 [ext_resource type="PackedScene" uid="uid://d4dbqrm7x1xft" path="res://Nodes/Enemys/fly.tscn" id="5_fyfdw"]
-[ext_resource type="PackedScene" uid="uid://d2jd3c1a54nb6" path="res://Nodes/hud.tscn" id="7_c80lp"]
+[ext_resource type="PackedScene" path="res://Nodes/hud.tscn" id="7_c80lp"]
 
 [node name="Stage" type="Node2D"]
 
