@@ -1,15 +1,98 @@
-[gd_scene load_steps=3 format=3 uid="uid://c1b7gwxc5vu6b"]
+[gd_scene load_steps=12 format=3 uid="uid://c1b7gwxc5vu6b"]
 
+[ext_resource type="PackedScene" uid="uid://dm3r6fw0s1ymd" path="res://Nodes/Enemys/!global_behaviour.tscn" id="1_8m8js"]
 [ext_resource type="Texture2D" uid="uid://df5un6jbcng1b" path="res://Assets/Images/Placeholders/placeholder_monster_blue.png" id="1_bxbq8"]
+[ext_resource type="Script" uid="uid://dk0reb1mu53bk" path="res://Scripts/Enemies/monster_blue.gd" id="1_whbwu"]
+[ext_resource type="Shader" uid="uid://c7iqiau8etjar" path="res://Assets/Shaders/flashSprite.gdshader" id="2_pucc0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whbwu"]
+resource_local_to_scene = true
+shader = ExtResource("2_pucc0")
+shader_parameter/sourceColor = Color(1, 1, 1, 1)
+shader_parameter/hint = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l1gay"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bxbq8")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w5l8l"]
 size = Vector2(96, 96)
 
-[node name="MonsterBlue" type="CharacterBody2D"]
-collision_layer = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l1gay"]
+size = Vector2(94, 94)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bxbq8")
+[sub_resource type="Animation" id="Animation_b7jkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_gpsv4"]
+resource_name = "hit"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/hint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xgmc1"]
+_data = {
+&"RESET": SubResource("Animation_b7jkp"),
+&"hit": SubResource("Animation_gpsv4")
+}
+
+[node name="MonsterBlue" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+script = ExtResource("1_whbwu")
+
+[node name="GlobalBehaviour" parent="." instance=ExtResource("1_8m8js")]
+health = 100.0
+has_knockback = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_whbwu")
+sprite_frames = SubResource("SpriteFrames_l1gay")
+animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_w5l8l")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_l1gay")
+debug_color = Color(0.863524, 0.348871, 0.220223, 0.42)
+
+[node name="hitAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xgmc1")
+}
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1

@@ -90,7 +90,7 @@ _data = {
 &"hit": SubResource("Animation_gpsv4")
 }
 
-[node name="Ant" type="CharacterBody2D" groups=["Ants"]]
+[node name="Ant" type="CharacterBody2D" groups=["Ants", "Enemy"]]
 collision_layer = 2
 script = ExtResource("1_xsn0i")
 health = 10.0

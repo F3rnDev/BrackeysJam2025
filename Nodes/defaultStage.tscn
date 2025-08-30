@@ -23,13 +23,15 @@ position = Vector2(238, 222)
 position = Vector2(725, 541)
 
 [node name="Bee" parent="EnemyGrp" instance=ExtResource("4_o7ya3")]
-position = Vector2(44, 603)
+position = Vector2(1963, 864)
+
+[node name="Fly2" parent="EnemyGrp" instance=ExtResource("5_fyfdw")]
+position = Vector2(3411, 967)
 
 [node name="Fly" parent="EnemyGrp" instance=ExtResource("5_fyfdw")]
-position = Vector2(460, 460)
+position = Vector2(3029, 231)
 
 [node name="AntHill" parent="EnemyGrp" instance=ExtResource("6_c80lp")]
-position = Vector2(1060, 208)
+position = Vector2(2165, -76)
 
 [node name="HUD" parent="." instance=ExtResource("7_c80lp")]
-visible = false

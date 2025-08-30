@@ -86,15 +86,16 @@ texture = ExtResource("3_ft8jm")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -150.0
-offset_right = 356.0
+offset_left = 11.0
+offset_top = -593.0
+offset_right = 347.0
+offset_bottom = -543.0
 grow_vertical = 0
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
 [node name="Icon" type="TextureRect" parent="Gun_container"]
-custom_minimum_size = Vector2(200, 150)
+custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 texture = ExtResource("4_ft8jm")
 
@@ -113,124 +114,126 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -604.0
-offset_top = -128.0
+offset_left = -1136.0
+offset_top = -105.0
+offset_right = -676.0
+offset_bottom = 77.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 10
-
-[node name="Itens_passive" type="HBoxContainer" parent="Itens_container"]
-custom_minimum_size = Vector2(0, 64)
-layout_mode = 2
-size_flags_vertical = 8
-
-[node name="Medkit" type="VBoxContainer" parent="Itens_container/Itens_passive"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Medkit"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("7_rwlk8")
-expand_mode = 2
-
-[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Medkit"]
-layout_mode = 2
-text = "3x"
-label_settings = SubResource("LabelSettings_rwlk8")
-horizontal_alignment = 1
-
-[node name="Box_gloves" type="VBoxContainer" parent="Itens_container/Itens_passive"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Box_gloves"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("8_f8pak")
-expand_mode = 2
-
-[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Box_gloves"]
-layout_mode = 2
-text = "3x"
-label_settings = SubResource("LabelSettings_rwlk8")
-horizontal_alignment = 1
-
-[node name="Boots" type="VBoxContainer" parent="Itens_container/Itens_passive"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Boots"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("9_u3oxp")
-expand_mode = 2
-
-[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Boots"]
-layout_mode = 2
-text = "3x"
-label_settings = SubResource("LabelSettings_rwlk8")
-horizontal_alignment = 1
-
-[node name="Magazine_gun" type="VBoxContainer" parent="Itens_container/Itens_passive"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Magazine_gun"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("10_hbqxb")
-expand_mode = 2
-
-[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Magazine_gun"]
-layout_mode = 2
-text = "3x"
-label_settings = SubResource("LabelSettings_rwlk8")
-horizontal_alignment = 1
-
-[node name="Laserblick" type="VBoxContainer" parent="Itens_container/Itens_passive"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Laserblick"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("11_exu65")
-expand_mode = 2
-
-[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Laserblick"]
-layout_mode = 2
-text = "3x"
-label_settings = SubResource("LabelSettings_rwlk8")
-horizontal_alignment = 1
-
-[node name="Attack_speed" type="VBoxContainer" parent="Itens_container/Itens_passive"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Attack_speed"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("12_kloxh")
-expand_mode = 2
-
-[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Attack_speed"]
-layout_mode = 2
-text = "3x"
-label_settings = SubResource("LabelSettings_rwlk8")
-horizontal_alignment = 1
-
-[node name="Ammo_piercing" type="VBoxContainer" parent="Itens_container/Itens_passive"]
-layout_mode = 2
-
-[node name="Icon" type="TextureRect" parent="Itens_container/Itens_passive/Ammo_piercing"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("13_5ayy8")
-expand_mode = 2
-
-[node name="Quantity" type="Label" parent="Itens_container/Itens_passive/Ammo_piercing"]
-layout_mode = 2
-text = "3x"
-label_settings = SubResource("LabelSettings_rwlk8")
-horizontal_alignment = 1
 
 [node name="Item_active" type="TextureRect" parent="Itens_container"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("14_qc4bh")
 expand_mode = 2
+
+[node name="BoxContainer" type="GridContainer" parent="Itens_container"]
+layout_mode = 2
+columns = 4
+
+[node name="Medkit" type="VBoxContainer" parent="Itens_container/BoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/BoxContainer/Medkit"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("7_rwlk8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/BoxContainer/Medkit"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Box_gloves" type="VBoxContainer" parent="Itens_container/BoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/BoxContainer/Box_gloves"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("8_f8pak")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/BoxContainer/Box_gloves"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Boots" type="VBoxContainer" parent="Itens_container/BoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/BoxContainer/Boots"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("9_u3oxp")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/BoxContainer/Boots"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Magazine_gun" type="VBoxContainer" parent="Itens_container/BoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/BoxContainer/Magazine_gun"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("10_hbqxb")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/BoxContainer/Magazine_gun"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Laserblick" type="VBoxContainer" parent="Itens_container/BoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/BoxContainer/Laserblick"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("11_exu65")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/BoxContainer/Laserblick"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Attack_speed" type="VBoxContainer" parent="Itens_container/BoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/BoxContainer/Attack_speed"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("12_kloxh")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/BoxContainer/Attack_speed"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1
+
+[node name="Ammo_piercing" type="VBoxContainer" parent="Itens_container/BoxContainer"]
+layout_mode = 2
+
+[node name="Icon" type="TextureRect" parent="Itens_container/BoxContainer/Ammo_piercing"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("13_5ayy8")
+expand_mode = 2
+
+[node name="Quantity" type="Label" parent="Itens_container/BoxContainer/Ammo_piercing"]
+layout_mode = 2
+text = "3x"
+label_settings = SubResource("LabelSettings_rwlk8")
+horizontal_alignment = 1

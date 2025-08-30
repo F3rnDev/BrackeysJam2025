@@ -167,7 +167,7 @@ _data = {
 &"hit": SubResource("Animation_gpsv4")
 }
 
-[node name="Bee" type="CharacterBody2D"]
+[node name="Bee" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 script = ExtResource("1_b7jkp")
 

@@ -204,7 +204,7 @@ _data = {
 &"hit": SubResource("Animation_fugcs")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_bkgf5")
 

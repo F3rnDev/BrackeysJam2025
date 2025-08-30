@@ -16,6 +16,7 @@ var exploded = false
 var bulletDamage = 1.0
 
 var hitGroup = "Enemy"
+var curGroup = "Player"
 
 func setProjectileParameters(spawnPos:Vector2, dir:Vector2, speed:float, maxDist:float, sprite:Texture, bulletDamage:float, hitGroup:String):
 	self.dir = dir.normalized()
@@ -33,6 +34,9 @@ func setProjectileParameters(spawnPos:Vector2, dir:Vector2, speed:float, maxDist
 	self.bulletDamage = bulletDamage
 	
 	self.hitGroup = hitGroup
+	
+	if hitGroup == "Player":
+		curGroup = "Enemy"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -42,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	if curDistance >= maxDist:
 		kill()
 	
-	if $RayCast2D.is_colliding():
+	if $RayCast2D.is_colliding() and !$RayCast2D.get_collider().is_in_group(curGroup):
 		explosionType = Explosion.Type.BulletWall
 		kill($RayCast2D.get_collision_point())
 	
@@ -50,11 +54,17 @@ func _physics_process(delta: float) -> void:
 
 func _on_collision_area_entered(area: Area2D) -> void:
 	if area.is_in_group(hitGroup):
-		var enemy = area.get_parent()
-		var behaviour = enemy.get_node("GlobalBehaviour")
-		behaviour.receiveHit(bulletDamage, dir)
+		if hitGroup == "Enemy":
+			print(area.get_parent().name)
+			var enemy = area.get_parent()
+			var behaviour = enemy.get_node("GlobalBehaviour")
+			behaviour.receiveHit(bulletDamage, dir)
+		elif hitGroup == "Player":
+			var dir = area.get_parent().global_position - global_position
+			area.get_parent().hit(dir)
 	
-	if !area.is_in_group("Weapon"):
+	
+	if !area.is_in_group("Weapon") and !area.is_in_group(curGroup):
 		kill()
 
 func kill(explosionPos:Vector2 = global_position):

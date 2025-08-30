@@ -14,6 +14,7 @@ var wasHit = false
 #Dashing
 @export var DASHSPEED: float = 700.0
 var dashing = false
+var dashDirecton = Vector2.ZERO
 
 func _ready() -> void:
 	setReloadBarMax()
@@ -68,13 +69,17 @@ func movePlayer():
 	if dashing:
 		speed = DASHSPEED
 	
-	if direction:
-		velocity = direction * speed
+	if direction and !dashing:
+		velocity = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 	
+	if dashing:
+		velocity = dashDirecton * DASHSPEED
+	
 	if Input.is_action_just_pressed("Roll") and direction:
+		dashDirecton = direction
 		roll()
 
 #Roll
