@@ -14,6 +14,9 @@ enum Type
 func playExplosion(pos:Vector2, curExplosion:Type):
 	global_position = pos
 	
+	if curExplosion != Type.BulletWall:
+		offset.x = 0.0
+	
 	var anim = Type.keys()[curExplosion]
 	play(anim)
 

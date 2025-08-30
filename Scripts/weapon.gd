@@ -105,7 +105,6 @@ func shoot():
 		return
 	
 	curMag -= 1
-	print("curMag: ", curMag)
 	
 	#Play shoot animation
 	stop()
@@ -150,7 +149,6 @@ func applyReload() -> void:
 	player.setReloadBarVisible(false)
 	play("transitionIdle")
 	canShoot = true
-	print("RELOADED - curMag: " , curMag, " curAmmo: ", curAmmo)
 
 
 func _on_animation_finished() -> void:
