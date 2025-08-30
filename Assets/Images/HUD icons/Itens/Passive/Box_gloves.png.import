@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh1q43e8ad80f"
-path="res://.godot/imported/Granade.png-0d2203c95cd5591086ba247d00445eb2.ctex"
+uid="uid://cubgs4454opr7"
+path="res://.godot/imported/Box_gloves.png-95bdca6192fef07921bbdaf74f17a3b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/HUD icons/Itens/Granade.png"
-dest_files=["res://.godot/imported/Granade.png-0d2203c95cd5591086ba247d00445eb2.ctex"]
+source_file="res://Assets/Images/HUD icons/Itens/Passive/Box_gloves.png"
+dest_files=["res://.godot/imported/Box_gloves.png-95bdca6192fef07921bbdaf74f17a3b3.ctex"]
 
 [params]
 

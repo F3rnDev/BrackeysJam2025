@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bok4rwl708qo5"
-path="res://.godot/imported/Medkit.png-6eff15c872531ba8577d2c25c9f4e0f8.ctex"
+uid="uid://byw36scaobbcv"
+path="res://.godot/imported/Shield_glass.png-03953b5920c6ff9d8ef7a19e07775530.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/HUD icons/Itens/Medkit.png"
-dest_files=["res://.godot/imported/Medkit.png-6eff15c872531ba8577d2c25c9f4e0f8.ctex"]
+source_file="res://Assets/Images/HUD icons/Itens/Active/Shield_glass.png"
+dest_files=["res://.godot/imported/Shield_glass.png-03953b5920c6ff9d8ef7a19e07775530.ctex"]
 
 [params]
 

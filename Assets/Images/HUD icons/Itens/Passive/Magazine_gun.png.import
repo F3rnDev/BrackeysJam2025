@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d251bh7fpcmph"
-path="res://.godot/imported/Molotov.png-90aae75ecb31912ca77b41136a9b0641.ctex"
+uid="uid://dspe6lgusnwtx"
+path="res://.godot/imported/Magazine_gun.png-1a6e167c94bc0c0912b61b6d8b4f5352.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/HUD icons/Itens/Molotov.png"
-dest_files=["res://.godot/imported/Molotov.png-90aae75ecb31912ca77b41136a9b0641.ctex"]
+source_file="res://Assets/Images/HUD icons/Itens/Passive/Magazine_gun.png"
+dest_files=["res://.godot/imported/Magazine_gun.png-1a6e167c94bc0c0912b61b6d8b4f5352.ctex"]
 
 [params]
 

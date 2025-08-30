@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="uid://y2q30obf1ltw"
 mouse_cursor/custom_image_hotspot=Vector2(36, 36)
+mouse_cursor/tooltip_position_offset=Vector2(18, 18)
 
 [global_group]
 
